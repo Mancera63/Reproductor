@@ -1,0 +1,114 @@
+
+Feb 16, 2017
+Guía de uso rápido de GIT
+
+ANTES DE EMPEZAR
+
+Instalar GIT: En linux, desde la terminal ejecutamos el siguiente comando como usuario root.
+
+# aptitude install git git-core
+/* En Windows es necesario descargar el archivo ejecutable desde esta url: https://git-scm.com/downloads en las configuraciones asegurarse de instalar GIT BASH. */
+Ayuda de GIT
+
+$ git help
+$ git help <comando>
+PRIMEROS PASOS
+
+Identificándonos con GIT
+
+$ git config?—?global user.name “Tu_Nombre”
+$ git config?—?global user.email tu@correo.com
+$ git config?—?global color.ui true (configuración de presentación del editor)
+THE BEGINNING
+
+Inicializar un repositorio vacío
+
+$ git init
+Mostrar el estado de nuestro repositorio
+
+$ git status
+Agregar todos los archivos en el proyecto
+
+$ git add?—?all
+Agregar todos los archivos .txt en el directorio actual
+
+$ git add *.txt
+Agregar todos los archivos .txt en el directorio
+
+$ git add docs/*.txt
+Agregar todos los archivos en el directorio /docs
+
+$ git add docs/
+Agregar todos los archivos .txt en todo el proyecto
+
+$ git add “*.txt”
+Guardando los cambios realizados (agregándolos al repositorio)
+
+$ git commit -am “Comentario Descriptivo”
+Muestra un historial de las acciones commits realizados
+
+$ git log
+Deshacer un commit
+
+$ git commit?—?amend
+Deshacer el último cambio en un archivo (antes de hacer commit)
+
+$ git checkout -f archivo.ext
+Regresar a un commit anterior
+
+$ git reset?—?hard HEAD~1
+/* El número indica la posición del commit en la pila de la base de datos, recordar que el commit más reciente posee la posición 0, el penúltimo la posición 1 y así sucesivamente */
+Crear ramas
+
+$ git branch nombre_rama
+Moverse entre ramas
+
+$ git checkout nombre_rama
+Crear una rama y moverse a ella inmediatamente
+
+$ git checkout -b new_branch
+Para unir varias ramas, moverse a la principal y desde allí ‘jalar’ la otra
+
+$ git merge nombre_rama
+Eliminar una rama
+
+$ git branch -d nombre_rama
+Agregar el origen de nuestro repositorio
+
+$ git remote add origin https://github.com/xscharlie/ejemplo1.git
+Revisar las fuentes remotas (listar las fuentes)
+
+$ git remote -v
+Eliminar un origen remoto
+
+$ git remote rm origin
+Sincronizar nuestro repositorio en línea con el local (se descargan los archivos con los cambios)
+
+$ git pull origin master
+Sincronizar la información (el estado) de nuestro repositorio en línea con el local
+
+$ git pull origin master
+Enviando los cambios al repositorio remoto
+
+$ git push -u origin master
+# se agrega el parámetro -u cuando se utilizan las credenciales
+Clonando un repositorio remoto
+
+$ git clone git://github.com/schacon/grit.git
+$ git clone git://github.com/schacon/grit.git nombre_carpeta
+$ git clone git://github.com/schacon/grit.git nombre_carpeta -b nombre_rama_en_ el_server
+Agregar etiquetas
+
+$ git tag -a v1.4 -m “Mensaje descriptivo de la versión ej: First release, version 1.4”
+Listando etiquetas
+
+$ git tag
+$ git tag -l “v1.8.5*”
+$ git show v1.4
+Enviando etiquetas al servidor
+
+$ git push -u origin master?—?tags
+Excluyendo archivos y carpetas
+
+archivo .gitignore
+#Este archivo debe contener el listado de archivos y carpetas a ignorar en el control de versiones
