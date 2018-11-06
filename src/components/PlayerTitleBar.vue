@@ -21,7 +21,7 @@
       </v-list>
     </v-menu>
     <v-spacer></v-spacer>
-    VUE MUSIC PLAYER
+    Reproductor de Música
     <v-spacer></v-spacer>
     <v-icon>remove</v-icon>
     <v-icon>check_box_outline_blank</v-icon>

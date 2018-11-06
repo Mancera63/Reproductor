@@ -34,7 +34,7 @@
     background-color:  orange !important;
   }
   .even {
-    background-color: #505050
+    background-color: #7dd2f1
   }
   .playlist {
     overflow: auto

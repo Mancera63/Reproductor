@@ -9,7 +9,7 @@
         </template>
         <v-icon v-show="this.muted">volume_off</v-icon>
       </v-btn>
-      <v-slider v-model="volume" @input="updateVolume(volume)" max="1" step="0.1" :class="{sliderV}" ></v-slider>{{this.volume * 100 + '%'}}
+      <v-slider v-model="volume" @input="updateVolume(volume)" max="1" step="0.1" ></v-slider>{{this.volume * 100 + '%'}}
       <v-spacer></v-spacer>
       <v-btn outline fab small color="light-blue" @click="skipTrack('prev')">
       <v-icon>skip_previous</v-icon>
@@ -27,6 +27,17 @@
       <v-icon>skip_next</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
+      <v-toolbar flat height="40">
+  <v-progress-linear height="40" v-model="trackProgress"  @click="updateSeek($event)"></v-progress-linear> 
+</v-toolbar>
+      <v-btn flat icon @click="toggleLoop">
+        <v-icon color="light-blue" v-if="this.loop">repeat_one</v-icon>
+        <v-icon color="blue-grey" v-else>repeat_one</v-icon>
+      </v-btn>
+      <v-btn flat icon @click="toggleShuffle">
+        <v-icon color="light-blue" v-if="this.shuffle">shuffle</v-icon>
+        <v-icon color="blue-grey" v-else>shuffle</v-icon>
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
@@ -34,12 +45,14 @@
 <script>
   export default {
     props: {
-      
+      loop: Boolean,
+      shuffle: Boolean,
+      progress: Number
     },
     data () {
       return {
         volume: 0.5,
-        muted: false
+        muted: false,
       }
     },
     created: function () {
@@ -64,13 +77,25 @@
       toggleMute () {
         Howler.mute(!this.muted)
         this.muted = !this.muted
-      }
-    }
+      },
+      toggleLoop () {
+        this.$emit('toggleloop', !this.loop)
+      },
+      toggleShuffle () {
+        this.$emit('toggleshuffle', !this.shuffle)
+      },
+      updateSeek (event) {
+  let el = document.querySelector(".progress-linear__bar"),
+      mousePos = event.offsetX,
+      elWidth = el.clientWidth,
+      percents = (mousePos / elWidth) * 100
+  this.$emit('updateseek', percents)
+}
+    },
+    computed: {
+  trackProgress () {
+    return this.progress * 100
+  },
+}
   }
 </script>
-
-<style scoped>
-  .sliderV {
-    padding-top: 25px;
-  }
-</style>
