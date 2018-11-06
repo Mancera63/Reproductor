@@ -1,0 +1,41 @@
+
+git reset
+Para resetear el index y el directorio que está trabajando al último estado comprometido se usa este comando:
+git reset - -hard HEAD
+git rm
+Este comando se puede usar para remover archivos del index y del directorio que está trabajando:
+git rm filename.txt
+git stash
+Este es uno de los comandos menos conocidos, pero ayuda a salvar cambios que no están por ser comprometidos inmediatamente, pero temporalmente:
+git stash
+git show
+Se usa para mostrar información sobre cualquier objeto git. Por ejemplo:
+git show
+git fetch
+Este comando le permite al usuario buscar todos los objetos de un repositorio remoto que actualmente no reside en el directorio local que está trabajando. Por ejemplo:
+git fetch origin
+git ls-tree
+Para ver un objeto de árbol junto con el nombre y modo de cada uno de ellos, y el valor blob´s SHA-1, se usa:
+git ls-tree HEAD
+git cat-file
+Usando el valor SHA-1, se puede ver el tipo de objeto usando este comando. Por ejemplo:
+git cat-file –p d670460b4b4aece5915caf5c68d12f560a9fe3e4
+git grep
+Este comando le permite al usuario buscar en los árboles de contenido cualquier frase o palabra. Por ejemplo, para buscar por www.tupaginaweb.com en todos los archivos se usaría:
+git grep “www.tupaginaweb.com”
+gitk
+Este es la interfaz gráfica para un repositorio local que puede invocar escribiendo y ejecutando:
+gitk
+git instaweb
+Con este comando un servidor web puede correr interconectado con el repositorio local. Un navegador web también está automáticamente dirigido a el:
+git instaweb –http=webrick
+git gc
+Para optimizar el repositorio por medio de una recolección de basura, que limpiara archivos innecesarios y los optimizara, usa:git hc
+git archive
+Este comando le permite al usuario crear archivos zip o tar que contengan los constituyentes de un solo árbol de repositorio:git archive – -format=tar master
+git prune
+Con este comando los objetos que no tengan ningún puntero entrante serán eliminados:git prune
+git fsck
+Para poder hacer un chequeo de integridad del sistema de archivos git, usa este comando. Cualquier objeto corrompido será detectado:git fsck
+git rebase
+Este comando se usa para la re aplicación de los compromisos en otra rama. Por ejemplo:git rebase master

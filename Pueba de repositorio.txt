@@ -1,0 +1,145 @@
+Ir a la carpeta dodnde sera el repositorio
+
+Confifugrar github en la computadora
+
+configurar nombre usuario en git;
+git config --global user.name "Alex"
+cofigurar correo
+git config --global user.email "alexx_gsolis@hotmail.com"
+obtener llave ssh
+ssh-keygen
+ssh-keygen -t rsa -C "email@youremail.com"
+C:\Program Files (x86)\Git desde gitbash
+
+en github en configuracion cargar el archivo ssh generado
+
+para crear un repositorio en la maquina
+git init
+
+para agregar archivos
+git add o git add .
+
+git status para estatus del ropositorio
+
+para hacer los cambios en el repositorio
+git commit -m "descripocion del commit" 
+
+
+conectar mi repositorio con el de github
+git remote add origin urldegithubdelproyecto
+o 
+git remote set-url origi
+n https://github.com/blacklex/Prueba-Repositorio.git
+
+git pull origin master --para traer todo del github al repositorio local
+
+git push origin master --para mandar los cambios a github
+
+
+
+nota: cuando se hace un cambio en los archivos del repositorio local
+con git status podemos ver cuales fueron modificados
+hacer un git add . git commit -m "commit"
+Subir a github
+git push origin master
+
+creacion de fork
+para tener ramas (copias independientes) donde se pueden hacer cambios y al momento
+de verificar que funciona bien se puede fusionar con la rama master
+
+para recuperar un proyecto o fork de github a la maquina
+hacer una carpeta
+hacer un repositorio
+git remote add nombredelrepremotio(origin) urldelrepositioriodegithub
+git pull origin master
+
+
+forks locales
+git branch dev
+
+cambiar de rama
+checkout dev
+todos los datos guardados aqui solo se guardan en esta rama
+
+para ver las ramas git branch
+
+para hacer el merge en otra rama
+git merge nombredelaramaparaunificar (estar en la rama donde se quiere actualizar)
+
+git push origin master --para actualizar en github
+
+
+pasos que casi siempre se usan para actulizar archivos
+git status
+git add . 
+git commit -m "descripcion"
+
+----si no esta conectado a un repositorio ----
+conectar mi repositorio con el de github
+git remote add origin urldegithubdelproyecto
+o 
+git remote set-url origi
+n https://github.com/blacklex/Prueba-Repositorio.git
+
+--traer una copia del repo
+git pull origin master --para traer todo del github al repositorio local
+------------------------------------------------
+git push origin master --para mandar los cambios a github
+
+
+Update your branch when the original branch from official repository has been updated :
+
+$ git fetch [name_of_your_remote]
+
+Then you need to apply to merge changes, if your branch is derivated from develop you need to do :
+
+$ git merge [name_of_your_remote]/develop
+
+Delete a branch on your local filesystem :
+
+$ git branch -d [name_of_your_new_branch]
+
+To force the deletion of local branch on your filesystem :
+
+$ git branch -D [name_of_your_new_branch]
+
+Delete the branch on github :
+
+$ git push origin :[name_of_your_new_branch]
+
+
+
+The interesting part comes after we switch back to our master branch, which we can do with the git checkout command:
+
+git checkout master
+
+To ensure that we are on the master branch, we can run type the following:
+
+git branch 
+
+The output will tell us which branch we are one, indicated by the asterisk.
+
+  develop 
+* master
+
+Running "ls" again, it appears that our new file is missing.
+
+file
+
+It's not missing - it's on our develop branch and we are on our master branch.
+
+In our scenario, this file represents any change to any file (or a whole new file) that has passed all testing on our development branch,and is ready to be in production. The process of moving code between branches (often from development to production) is known as merging.
+
+It is important to remember when merging, that we want to be on the branch that we want to merge to.
+
+In this case, we want to merge from our develop branch, where the "develop" file exists, to our master branch.
+
+Keeping that in mind, considering that we are already on the master branch, all we have to do is run the merge command.
+
+One of the options that we can pass to the merge command, namely "--no-ff", means we want git to retain all of the commit messages prior to the merge. This will make tracking changes easier in the future.
+
+To merge the changes from the develop branch to the master branch, type the following:
+
+git merge develop --no-ff
+
+git push
