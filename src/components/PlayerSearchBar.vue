@@ -3,7 +3,7 @@
     <v-text-field
     clearable 
     prepend-icon="search"
-    placeholder="Quick search"
+    placeholder="Busqueda"
     v-model="searchString"
     @input="searchPlaylist">
     </v-text-field>
